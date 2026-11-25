@@ -54,3 +54,31 @@ def pedir_incidente():
 
     ok, mensaje = registrar_incidente(titulo, descripcion, prioridad, estado)
     print(("[OK] " if ok else "[ERROR] ") + mensaje)
+
+def mostrar_incidentes():
+    if len(incidentes) == 0:
+        print("No hay incidentes registrados.")
+        return
+    for i, inc in enumerate(incidentes, start=1):
+        print(f"{i}. {inc['titulo']} | {inc['prioridad']} | {inc['estado']}")
+        print(f"   {inc['descripcion']}")
+
+
+# ---------- Menú principal ----------
+if __name__ == "__main__":
+    while True:
+        print("\n--- Registro de incidentes ---")
+        print("1. Registrar incidente")
+        print("2. Ver incidentes registrados")
+        print("3. Salir")
+        opcion = input("Opción: ").strip()
+
+        if opcion == "1":
+            pedir_incidente()
+        elif opcion == "2":
+            mostrar_incidentes()
+        elif opcion == "3":
+            print("Hasta luego.")
+            break
+        else:
+            print("[ERROR] Opción no válida.")
