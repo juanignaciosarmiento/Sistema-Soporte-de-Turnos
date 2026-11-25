@@ -34,3 +34,13 @@ def registrar_incidente(titulo, descripcion, prioridad, estado):
 
 def listar_incidentes():
     return incidentes
+
+def elegir_opcion(texto, opciones):
+    """Muestra las opciones numeradas y devuelve la elegida (o None si es inválida)."""
+    print(texto)
+    for i, opcion in enumerate(opciones, start=1):
+        print(f"  {i}. {opcion}")
+    eleccion = input("Elija una opción: ").strip()
+    if eleccion.isdigit() and 1 <= int(eleccion) <= len(opciones):
+        return opciones[int(eleccion) - 1]
+    return None
