@@ -15,3 +15,22 @@ def validar_incidente(titulo, descripcion, prioridad, estado):
     if estado not in ESTADOS:
         return "El estado debe ser Abierto, En proceso o Resuelto."
     return None
+
+def registrar_incidente(titulo, descripcion, prioridad, estado):
+    """Valida y agrega el incidente a la lista. Devuelve (ok, mensaje)."""
+    error = validar_incidente(titulo, descripcion, prioridad, estado)
+    if error:
+        return False, error
+
+    incidente = {
+        "titulo": titulo.strip(),
+        "descripcion": descripcion.strip(),
+        "prioridad": prioridad,
+        "estado": estado,
+    }
+    incidentes.append(incidente)
+    return True, "Incidente registrado correctamente."
+
+
+def listar_incidentes():
+    return incidentes
