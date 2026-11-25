@@ -44,3 +44,13 @@ def elegir_opcion(texto, opciones):
     if eleccion.isdigit() and 1 <= int(eleccion) <= len(opciones):
         return opciones[int(eleccion) - 1]
     return None
+
+def pedir_incidente():
+    """Pide los datos por teclado y trata de registrar el incidente."""
+    titulo = input("Título: ")
+    descripcion = input("Descripción: ")
+    prioridad = elegir_opcion("Prioridad:", PRIORIDADES)
+    estado = elegir_opcion("Estado:", ESTADOS)
+
+    ok, mensaje = registrar_incidente(titulo, descripcion, prioridad, estado)
+    print(("[OK] " if ok else "[ERROR] ") + mensaje)
